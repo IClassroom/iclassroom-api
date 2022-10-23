@@ -5,7 +5,7 @@
 1 - Crie e ative o ambiente virtual com os seguintes comandos
 
     python3 -m venv venv/
-    source ven/bin/activate
+    source venv/bin/activate
 
 2 - Instale as dependências
 
