@@ -17,7 +17,7 @@ class Aula(models.Model):
     )
 
     cronograma_id = models.ForeignKey(
-        Cronograma, 
+        Cronograma,
         on_delete = models.CASCADE,
         db_column = 'cronograma_id'
     )
@@ -99,13 +99,13 @@ class UsuarioTurma(models.Model):
     )
 
     usuario_id = models.ForeignKey(
-        Usuario, 
+        Usuario,
         on_delete = models.CASCADE,
         db_column = 'usuario_id'
     )
 
     turma_id = models.ForeignKey(
-        Turma, 
+        Turma,
         on_delete = models.CASCADE,
         db_column = 'turma_id'
     )
@@ -124,7 +124,7 @@ class Topico(models.Model):
     )
 
     turma_id = models.ForeignKey(
-        Turma, 
+        Turma,
         on_delete = models.CASCADE,
         db_column = 'turma_id'
     )
@@ -173,35 +173,6 @@ class Atividade(models.Model):
     class Meta:
         db_table = 'public\".\"atividade'
         verbose_name_plural = 'Atividades'
-
-class Aula(models.Model):
-    id = models.AutoField(
-        primary_key = True
-    )
-
-    cronograma_id = models.ForeignKey(
-        Cronograma,
-        on_delete = models.CASCADE,
-        db_column = 'cronograma_id'
-    )
-
-    dia = models.DateField()
-
-    titulo = models.CharField(
-        max_length = 250
-    )
-
-    assuntos = models.CharField(
-        max_length = 500
-    )
-
-    descricao = models.CharField(
-        max_length = 700
-    )
-
-    class Meta:
-        db_table = 'public\".\"aula'
-        verbose_name_plural = 'Aulas'
 
 class Material(models.Model):
     id = models.AutoField(
