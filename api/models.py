@@ -8,7 +8,7 @@ class Cronograma(models.Model):
     turma_id = models.IntegerField()
 
     class Meta:
-        db_table = 'iclassroom\".\"cronograma'
+        db_table = 'public\".\"cronograma'
         verbose_name_plural = 'Cronogromas'
 
 class Aula(models.Model):
@@ -37,5 +37,5 @@ class Aula(models.Model):
     )
 
     class Meta:
-        db_table = 'iclassroom\".\"aula'
+        db_table = 'public\".\"aula'
         verbose_name_plural = 'Aulas'
