@@ -22,6 +22,16 @@
     DATABASE_PORT=
     DEBUG=True
 
+# Executando migrações
+
+1 - Caso faça alterações nos modelos do projeto, execute o comando abaixo para gerar as migrações
+
+    python manage.py makemigrations
+
+2 - Após gerar as migrações, execute o comando abaixo para executar as migrações no banco de dados
+    
+        python manage.py migrate
+
 # Executando o projeto
 
     python3 manage.py runserver

@@ -263,7 +263,7 @@ class Duvida(models.Model):
         db_table = 'public\".\"duvida'
         verbose_name_plural = 'Duvidas'
 
-class RepostaDuvida(models.Model):
+class RespostaDuvida(models.Model):
     id = models.AutoField(
         primary_key = True
     )
@@ -288,7 +288,7 @@ class RepostaDuvida(models.Model):
         db_table = 'public\".\"resposta_duvida'
         verbose_name_plural = 'Resposta Duvidas'
 
-class RepostaAtividade(models.Model):
+class RespostaAtividade(models.Model):
     id = models.AutoField(
         primary_key = True
     )
@@ -305,7 +305,7 @@ class RepostaAtividade(models.Model):
 
     envio_confirmado = models.BooleanField()
 
-class Anexos(models.Model):
+class Anexo(models.Model):
     id = models.AutoField(
         primary_key = True
     )
@@ -323,7 +323,7 @@ class Anexos(models.Model):
     )
 
     resposta_atividade_id = models.ForeignKey(
-        RepostaAtividade,
+        RespostaAtividade,
         on_delete = models.CASCADE,
         db_column = 'resposta_atividade_id'
     )
@@ -335,4 +335,58 @@ class Anexos(models.Model):
     class Meta:
         db_table = 'public\".\"anexos'
         verbose_name_plural = 'Anexos'
+
+class Aviso(models.Model):
+    id = models.AutoField(
+        primary_key = True
+    )
+
+    turma_id = models.ForeignKey(
+        Turma,
+        on_delete = models.CASCADE,
+        db_column = 'turma_id'
+    )
+
+    usario_id = models.ForeignKey(
+        Usuario,
+        on_delete = models.CASCADE,
+        db_column = 'usuario_id'
+    )
+
+    titulo = models.CharField(
+        max_length = 250
+    )
+
+    descricao = models.CharField(
+        max_length = 700
+    )
+
+    class Meta:
+        db_table = 'public\".\"aviso'
+        verbose_name_plural = 'Avisos'
+
+class ComentarioAviso(models.Model):
+    id = models.AutoField(
+        primary_key = True
+    )
+
+    aviso_id = models.ForeignKey(
+        Aviso,
+        on_delete = models.CASCADE,
+        db_column = 'aviso_id'
+    )
+
+    usuario_id = models.ForeignKey(
+        Usuario,
+        on_delete = models.CASCADE,
+        db_column = 'usuario_id'
+    )
+
+    texto = models.CharField(
+        max_length = 700
+    )
+
+    class Meta:
+        db_table = 'public\".\"comentario_aviso'
+        verbose_name_plural = 'Comentario Avisos'
 
