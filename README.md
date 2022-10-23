@@ -36,3 +36,20 @@
 
     python3 manage.py runserver
 
+    ou
+
+    gunicorn --bind 0.0.0.0:8000 setup.wsgi
+
+# Docker
+
+Para buildar e subir os containers, utilize os seguintes comandos:
+
+    docker build -t iclassroom-api .
+    docker run -p 8000:8000 iclassroom-api
+
+    ou
+
+    docker-compose up | para subir o projeto
+    docker-compose up --build | para buildar e subir o projeto
+
+    (obs: pode usar a flag -d, de detached, para usar o mesmo terminal)
