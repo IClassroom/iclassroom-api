@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    image: iclassroom-api
+    command: gunicorn --bind 0.0.0.0:8000 iclassroom_api.wsgi
+    ports:
+      - "8000:8000"
