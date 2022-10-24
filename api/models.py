@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractBaseUser
 
 class Cronograma(models.Model):
     id = models.AutoField(
@@ -51,7 +52,7 @@ class Bibliografia(models.Model):
         db_table = 'public\".\"bibliografia'
         verbose_name_plural = 'Bibliografias'
 
-class Usuario(models.Model):
+class Usuario(AbstractBaseUser):
     id = models.AutoField(
         primary_key = True
     )
@@ -61,12 +62,11 @@ class Usuario(models.Model):
     )
 
     email = models.CharField(
-        max_length = 250
+        max_length = 250,
+        unique = True
     )
 
-    senha = models.CharField(
-        max_length = 250
-    )
+    USERNAME_FIELD = 'email'
 
     class Meta:
         db_table = 'public\".\"usuario'
