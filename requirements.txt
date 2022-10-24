@@ -1,4 +1,4 @@
-backports.zoneinfo==0.2.1
+backports.zoneinfo;python_version<"3.9"
 Django==4.1
 djangorestframework==3.13.1
 django-cors-headers
