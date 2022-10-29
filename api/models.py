@@ -78,7 +78,8 @@ class Turma(models.Model):
     )
 
     codigo = models.CharField(
-        max_length = 250
+        max_length = 250,
+        unique = True
     )
 
     titulo = models.CharField(

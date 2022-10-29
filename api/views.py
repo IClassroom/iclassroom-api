@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.contrib.auth.hashers import make_password
 from rest_framework import viewsets
+from rest_framework.serializers import ModelSerializer
 
-from api.models import Usuario
-from api.serializers import UsuarioSerializer
+from api.models import Usuario, Turma
+from api.serializers import UsuarioSerializer, TurmaSerializer
 
 from django.contrib.auth import authenticate
 from django.views.decorators.csrf import csrf_exempt
@@ -12,6 +13,9 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
+
+import random
+import string
 
 # Create your views here.
 class UsuarioView(viewsets.ModelViewSet):
@@ -61,3 +65,13 @@ def login(request):
     else:
         return Response({'error': 'Credenciais inválidas'},
                         status=status.HTTP_401_UNAUTHORIZED)
+
+
+class TurmaView(viewsets.ModelViewSet):
+    queryset = Turma.objects.all()
+    serializer_class = TurmaSerializer
+
+    def perform_create(self, serializer):
+        codigo = ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
+
+        serializer.save(codigo=codigo)
