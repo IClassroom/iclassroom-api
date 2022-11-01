@@ -21,6 +21,7 @@
     DATABASE_HOST=
     DATABASE_PORT=
     DEBUG=True
+    ALLOWED_HOSTS=*,
 
 # Executando migrações
 
@@ -29,7 +30,7 @@
     python manage.py makemigrations
 
 2 - Após gerar as migrações, execute o comando abaixo para executar as migrações no banco de dados
-    
+
         python manage.py migrate
 
 # Executando o projeto
