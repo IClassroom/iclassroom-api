@@ -41,6 +41,12 @@
 
     gunicorn --bind 0.0.0.0:8000 setup.wsgi
 
+# Testes
+
+Para executar os testes, basta rodar o comando:
+
+    python manage.py test
+
 # Docker
 
 Para buildar e subir os containers, utilize os seguintes comandos:
