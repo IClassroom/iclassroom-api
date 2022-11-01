@@ -67,11 +67,26 @@ class UsuarioTestCase(TestCase):
         """
         token, data = self.authenticate()
         data["nome"] = "Teste 2"
+        data["email"] = "teste2@gmail.com"
         data["password"] = self.test_user["password"]
 
         user = json.dumps(data)
 
         response = self.client.put(f'{self.base_route}{data["id"]}/', data=user, content_type='application/json',
+                                    HTTP_AUTHORIZATION='Token ' + token)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_should_update_specific_field(self):
+        """
+        Testa a atualização de um campo específico de um usuário e verifica se o status code foi 200
+        """
+        token, data = self.authenticate()
+        data["nome"] = "Teste 2"
+        data["password"] = self.test_user["password"]
+
+        user = json.dumps(data)
+
+        response = self.client.patch(f'{self.base_route}{data["id"]}/', data=user, content_type='application/json',
                                     HTTP_AUTHORIZATION='Token ' + token)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
