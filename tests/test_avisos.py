@@ -81,4 +81,4 @@ class AvisoTestCase(TestCase):
         self.test_notice['turma_id'] = class_id
         self.test_notice['usuario_id'] = user['id']
         response = self.client.post(self.base_route, self.test_notice, HTTP_AUTHORIZATION='Token ' + token)
-        self.assertEqual(response.data.usuario_id, status.HTTP_201_CREATED)
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)

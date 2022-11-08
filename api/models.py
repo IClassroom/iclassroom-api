@@ -319,7 +319,7 @@ class Aviso(models.Model):
         db_column = 'turma_id'
     )
 
-    usario_id = models.ForeignKey(
+    usuario_id = models.ForeignKey(
         Usuario,
         on_delete = models.CASCADE,
         db_column = 'usuario_id'
