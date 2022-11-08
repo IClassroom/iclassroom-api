@@ -86,6 +86,20 @@ class TurmasTesteCase(TestCase):
                                    content_type='application/json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
+    def test_should_update_specific_field_from_class(self):
+        """
+        Testa a atualização de um campo específico de uma turma e verifica se o status code foi 200
+        """
+        token, user = self.authenticate()
+        user["codigo"] = "123456"
+
+        user = json.dumps(user)
+
+        response = self.client.post(self.base_route, self.test_class, HTTP_AUTHORIZATION='Token ' + token)
+        response = self.client.patch(f'{self.base_route}{response.data["id"]}/', data=user, HTTP_AUTHORIZATION='Token ' + token,
+                                   content_type='application/json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
     def test_should_delete_class(self):
         """
         Testa a deleção de uma turma e verifica se o status code foi 204

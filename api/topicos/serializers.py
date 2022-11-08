@@ -1,13 +1,13 @@
 from rest_framework import serializers
-from api.models import Turma
+from api.models import Topico
 
-class TurmaSerializer(serializers.ModelSerializer):
+class TopicoSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Turma
+        model = Topico
         fields = "__all__"
         extra_kwargs = {
-            'codigo': {
-                'required': False,
+            'id': {
                 'read_only': True,
             },
+
         }
