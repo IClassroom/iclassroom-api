@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from api.models import Aviso
 
-class TopicoSerializer(serializers.ModelSerializer):
+class AvisoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Aviso
         fields = "__all__"
