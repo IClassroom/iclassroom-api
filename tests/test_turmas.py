@@ -26,7 +26,8 @@ class TurmasTesteCase(TestCase):
         self.test_class = {
             "codigo": "123456",
             "titulo": "Turma A",
-            "descricao": "Descrição da turma A de teste"
+            "descricao": "Descrição da turma A de teste",
+            "professor_id": None
         }
 
     def authenticate(self):
@@ -39,7 +40,7 @@ class TurmasTesteCase(TestCase):
         Id: Id do usuário
         """
         user = self.client.post(self.create_user_route, self.test_user)
-
+        self.test_class['professor_id'] = user.data['id']
         response = self.client.post(self.login_route, self.login_user)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         return response.data['token'], user.data
@@ -78,6 +79,7 @@ class TurmasTesteCase(TestCase):
         user["codigo"] = "123456"
         user["titulo"] = "Turma B"
         user["descricao"] = "Descrição da turma B de teste"
+        user["professor_id"] = user['id']
 
         user = json.dumps(user)
 
@@ -92,7 +94,6 @@ class TurmasTesteCase(TestCase):
         """
         token, user = self.authenticate()
         user["codigo"] = "123456"
-
         user = json.dumps(user)
 
         response = self.client.post(self.base_route, self.test_class, HTTP_AUTHORIZATION='Token ' + token)

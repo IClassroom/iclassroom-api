@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from api.models import Turma
+from api.models import Turma, UsuarioTurma
 
 class TurmaSerializer(serializers.ModelSerializer):
     class Meta:
@@ -11,3 +11,8 @@ class TurmaSerializer(serializers.ModelSerializer):
                 'read_only': True,
             },
         }
+
+class UsuarioTurmaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UsuarioTurma
+        fields = "__all__"
