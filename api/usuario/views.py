@@ -1,11 +1,9 @@
-from django.shortcuts import render
 from django.contrib.auth.hashers import make_password
 from rest_framework import viewsets
 
 from api.models import Usuario
-from api.serializers import UsuarioSerializer
+from .serializers import UsuarioSerializer
 
-from django.contrib.auth import authenticate
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.authtoken.models import Token
 from rest_framework.decorators import api_view, permission_classes
