@@ -11,7 +11,13 @@ class TurmaView(viewsets.ModelViewSet):
     serializer_class = TurmaSerializer
 
     def perform_create(self, serializer):
-        source = string.ascii_uppercase + string.digits
-        codigo = ''.join(random.sample(source, 7))
+
+        letters = ''.join(random.sample(string.ascii_uppercase, 4))
+        digits = ''.join(random.sample(string.digits, 4))
+
+        sample_list = list(letters + digits)
+        sample_list = random.shuffle(sample_list)
+
+        codigo = ''.join(sample_list)
 
         serializer.save(codigo=codigo)
