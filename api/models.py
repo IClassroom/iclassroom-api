@@ -77,6 +77,12 @@ class Turma(models.Model):
         primary_key = True
     )
 
+    professor_id = models.ForeignKey(
+        Usuario,
+        on_delete=models.CASCADE,
+        db_column='professor_id',
+    )
+
     codigo = models.CharField(
         max_length = 250,
         unique = True

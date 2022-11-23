@@ -27,7 +27,8 @@ class TopicosTesteCase(TestCase):
         self.test_class = {
             "codigo": "123456",
             "titulo": "Teste",
-            "descricao": "Teste"
+            "descricao": "Teste",
+            "professor_id": None
         }
 
         self.test_topic = {
@@ -46,7 +47,7 @@ class TopicosTesteCase(TestCase):
         Id: Id do usuário
         """
         user = self.client.post(self.create_user_route, self.test_user)
-
+        self.test_class['professor_id'] = user.data['id']
         response = self.client.post(self.login_route, self.login_user)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         return response.data['token'], user.data

@@ -11,3 +11,4 @@ class TurmaSerializer(serializers.ModelSerializer):
                 'read_only': True,
             },
         }
+
