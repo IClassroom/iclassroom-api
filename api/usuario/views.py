@@ -54,7 +54,9 @@ def login(request):
 
         token, _ = Token.objects.get_or_create(user=user)
 
-        return Response({'token': token.key},
+        userSerialized = UsuarioSerializer(user)
+
+        return Response({'token': token.key, 'usuario': userSerialized.data},
                         status=status.HTTP_200_OK)
     else:
         return Response({'error': 'Credenciais inválidas'},
